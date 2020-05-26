@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"uri": "vscode-remote://ssh-remote+169.254.10.1/home/pi/project1"
+		},
+		{
+			"uri": "vscode-remote://ssh-remote+169.254.10.1/var/www/html"
+		}
+	],
+	"remoteAuthority": "ssh-remote+169.254.10.1",
+	"settings": {
+		"python.pythonPath": "/usr/bin/python3"
+	}
+}
