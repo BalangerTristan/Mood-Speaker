@@ -5,18 +5,22 @@ const endpoint = '/api/v1/';
 let DOMTemperatuur;
 
 const showTemperatuur = function(jsonObject){
-  DOMTemperatuur.innerHTML = jsonObject[jsonObject.length - 1].Waarde+ ' °C';
+  // DOMTemperatuur.innerHTML = jsonObject[jsonObject.length - 1].Waarde+ ' °C';
+  DOMTemperatuur.innerHTML = jsonObject.Waarde+ ' °C';
 }
 
 const getTemperatuur = function(){
-  console.log(`http://${lanIP}${endpoint}sensoren/1/historiek/`);
-  handleData(`http://${lanIP}${endpoint}sensoren/1/historiek/`, showTemperatuur);
+  handleData(`http://${lanIP}${endpoint}componenten/1/historiek/`, showTemperatuur);
 }
 
 const init = function () {
   DOMTemperatuur = document.querySelector('.js-temperatuur');
-  getTemperatuur();
- }
+  socket.emit('connect');
+  socket.on('temperatuur', function(data){
+    showTemperatuur(data);
+  });
+  // getTemperatuur();
+};
 
 
 document.addEventListener("DOMContentLoaded", function () {

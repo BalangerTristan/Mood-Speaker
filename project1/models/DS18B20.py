@@ -1,7 +1,13 @@
-class DS18B20:
+from threading import Thread
+import time
+from repositories.DataRepository import DataRepository
 
-    def __init__(self, address):
+class DS18B20(Thread):
+
+    def __init__(self, address, socket):
+        Thread.__init__(self)
         self.address = address
+        self.socket = socket
 
     @property
     def address(self):
@@ -26,4 +32,9 @@ class DS18B20:
         data.close()
         return float(f'{temperatuur[:-3]}.{temperatuur[-3:]}')
 
-dd
+    def run(self):
+        while True:
+            temperatuur = self.inlezen_temp()
+            DataRepository.meting(1, temperatuur)
+            self.socket.emit('temperatuur', {'Waarde': temperatuur})
+            time.sleep(25)

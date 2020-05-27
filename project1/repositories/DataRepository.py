@@ -28,6 +28,10 @@ class DataRepository:
         params = [componentid]
         return Database.get_rows(sql, params)
     
-    
+    @staticmethod
+    def get_latest_value(componentid):
+        sql = "SELECT Waarde FROM ComponentHistoriek WHERE ComponentID = %s ORDER BY EventID DESC LIMIT 1"
+        params = [componentid]
+        return Database.get_one_row(sql, params)
 
 

@@ -11,11 +11,6 @@ import threading
 from RPi import GPIO
 from models.DS18B20 import DS18B20
 
-# One Wire
-# temperatuur_sensor = DS18B20('28-02119245e9af')
-# DS18B20
-temperatuur_sensor = DS18B20('28-00000bcf0c9b')
-
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
@@ -26,6 +21,11 @@ app.config['SECRET_KEY'] = 'Hier mag je om het even wat schrijven, zolang het ma
 socketio = SocketIO(app, cors_allowed_origins="*")
 CORS(app)
 
+# One Wire
+# temperatuur_sensor = DS18B20('28-02119245e9af')
+# DS18B20
+temperatuur_sensor = DS18B20('28-00000bcf0c9b', socketio)
+temperatuur_sensor.start()
 
 # API ENDPOINTS
 endpoint = '/api/v1/'
@@ -56,12 +56,11 @@ def get_history_by_componentid(componentid):
 
 
 # SOCKET IO
-
+@socketio.on('connect')
+def init_connection():
+    socketio.emit('temperatuur', DataRepository.get_latest_value(1))
+    print('User connected')
 
 if __name__ == '__main__':
     socketio.run(app, debug=False, host='0.0.0.0')
 
-
-# while True:
-#     DataRepository.meting(1, temperatuur_sensor.inlezen_temp())
-#     time.sleep(30)
