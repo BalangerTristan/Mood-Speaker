@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mood Speaker - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="./style/normalize.css" />
+    <link rel="stylesheet" href="./style/screen.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="./script/app.js"></script>
+    <script src="./script/navigation.js"></script>
+    <script src="./script/dataHandler.js"></script>
+  </head>
+
+  <body>
+    <header class="o-row o-row--header">
+      <div class="o-container">
+        <div class="c-header">
+          <div class="c-header__mobile-nav-trigger">
+            <button class="o-button-reset c-nav-trigger js-toggle-nav">
+              <svg class="c-nav-trigger__svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+              </svg>
+            </button>
+          </div>
+          <h1 class="c-header__title c-lead c-lead--xl c-lead--white u-mb-clear">Home</h1>
+        </div>
+      </div>
+    </header>
+    <div class="o-row--card">
+      <div>
+        <div class="info">
+          <p class="info_text o-layout o-layout--justify-center o-layout--align-center">
+            <!-- since its <span class="js-temperatuur"></span> °C<br> -->
+            Since its X °C
+          </p>
+          <p class="info_text o-layout o-layout--justify-center o-layout--align-center">
+            <!-- since its <span class="js-temperatuur"></span> °C<br> -->
+            Mood Speaker selected this song
+          </p>
+        </div>
+        <div class="o-layout o-layout--justify-center o-layout--align-center">
+          <img class="c-img_cover" src="img/220px-GNR_Heaven.jpg" alt="">
+        </div>
+        <div class="o-layout o-layout--justify-center o-layout--align-center o-layout--column">
+          <h4 class="info_cover">Knockin' on heaven's door</h4>
+          <p class="info_cover">Guns N'Roses</p>
+        </div>
+        <div class="seek">
+          <div class="fill"></div>
+          <div class="handle"></div>
+          <p class="o-layout o-layout--justify-space-around"><span id="current-time">0:00</span>  <span id="duration">0:00</span></p>
+          <div class="o-layout o-layout--justify-center o-layout--align-center">
+            <p id="prev" class="material-icons">fast_rewind</p>
+            <p id="play" class="material-icons">play_arrow</p>
+            <p id="next" class="material-icons">fast_forward</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="c-card">
+        <p class="c-card__text_main">Music selection</p>
+        <div class="c-card__box">
+          <div>
+            <p class="c-card__text_second">Temperature</p>
+            <p class="c-card__text_main u-mb-clear"><span class="js-temperatuur"></span> °C</p>
+          </div>
+          <div>
+            <p class="c-card__text_second">Brightness</p>
+            <p class=c-card__text_main u-mb-clear"><span class="js-licht"></span> %</p>
+          </div>
+        </div>
+    </footer> 
+    <aside class="c-mobile-nav">
+      <div class="c-mobile-nav__body">
+        <svg class="c-mobile-nav__svg" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 360 195.38">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: url(#linear-gradient);
+              }
+            </style>
+            <linearGradient id="linear-gradient" x1="420.23" y1="151.32" x2="-35.56" y2="21.05" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#ed2939" />
+              <stop offset="1" stop-color="#020024" />
+            </linearGradient>
+          </defs>
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M0,163.15c16.46,6,32.74,10.8,44.49,14.82,37.26,9.81,140.29,52.69,224.13-48.45C309,80.77,337.62,58.65,360,48.75V0H0Z" /></g>
+          </g>
+        </svg>
+        <div class="c-profile u-mb-profile-nav">
+          <div class="c-profile__picture"></div>
+          <div>
+            <p class="c-lead--md u-color-white u-mb-clear">Tristan Balanger</p>
+          </div>
+          <svg class="u-color-white" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M7 10l5 5 5-5z" />
+          </svg>
+        </div>
+        <div class="c-mobile-nav__nav c-mobile-nav__nav--main">
+          <nav class="c-nav">
+            <ul class="o-list c-nav__list">
+              <li class="c-nav__item">
+                <a href="./index.html" class="c-nav__link c-nav__link--active">
+                  <svg class="c-nav__icon c-nav__icon--active" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                  </svg>
+                  Home
+                </a>
+              </li>
+              <li class="c-nav__item">
+                <a href="./Statistics.html" class="c-nav__link">
+                  <svg class="c-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path id="ic_assessment_24px" d="M24.333,3H5.667A2.675,2.675,0,0,0,3,5.667V24.333A2.675,2.675,0,0,0,5.667,27H24.333A2.675,2.675,0,0,0,27,24.333V5.667A2.675,2.675,0,0,0,24.333,3ZM11,21.667H8.333V12.333H11Zm5.333,0H13.667V8.333h2.667Zm5.333,0H19V16.333h2.667Z" transform="translate(-3 -3)" />
+                  </svg>                  
+                  Statistics
+                </a>
+              </li>
+              <li class="c-nav__item">
+                <a href="./Audio.html" class="c-nav__link">
+                  <svg class="c-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 24">
+                    <path id="ic_music_note_24px" d="M15,3V17.067a6.574,6.574,0,0,0-3-.733c-3.315,0-6,2.387-6,5.333S8.685,27,12,27s6-2.387,6-5.333V8.333h6V3Z" transform="translate(-6 -3)" />
+                  </svg>
+                  Audio
+                </a>
+              </li>
+              <li class="c-nav__item">
+                <a href="./Settings.html" class="c-nav__link">
+                  <svg class="c-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path id="ic_settings_applications_24px" d="M15,12.333A2.667,2.667,0,1,0,17.667,15,2.675,2.675,0,0,0,15,12.333ZM24.333,3H5.667A2.666,2.666,0,0,0,3,5.667V24.333A2.666,2.666,0,0,0,5.667,27H24.333A2.666,2.666,0,0,0,27,24.333V5.667A2.666,2.666,0,0,0,24.333,3ZM22,15a6.748,6.748,0,0,1-.067.907l1.973,1.547a.471.471,0,0,1,.107.6L22.147,21.28a.472.472,0,0,1-.573.2l-2.32-.933a7.151,7.151,0,0,1-1.573.92l-.347,2.467a.484.484,0,0,1-.467.4H13.133a.485.485,0,0,1-.467-.387L12.32,21.48a6.856,6.856,0,0,1-1.573-.92l-2.32.933a.472.472,0,0,1-.573-.2L5.987,18.067a.471.471,0,0,1,.107-.6L8.067,15.92A7.116,7.116,0,0,1,8,15a6.748,6.748,0,0,1,.067-.907L6.093,12.547a.471.471,0,0,1-.107-.6L7.853,8.72a.472.472,0,0,1,.573-.2l2.32.933a7.151,7.151,0,0,1,1.573-.92l.347-2.467a.484.484,0,0,1,.467-.4h3.733a.485.485,0,0,1,.467.387L17.68,8.52a6.856,6.856,0,0,1,1.573.92l2.32-.933a.472.472,0,0,1,.573.2l1.867,3.227a.471.471,0,0,1-.107.6L21.933,14.08A7.116,7.116,0,0,1,22,15Z" transform="translate(-3 -3)" />
+                  </svg>                  
+                  Settings
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </aside>
+  </body>
+</html>

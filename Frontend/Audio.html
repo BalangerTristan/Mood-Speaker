@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mood Speaker - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="./style/normalize.css" />
+    <link rel="stylesheet" href="./style/screen.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="./script/app.js"></script>
+    <script src="./script/navigation.js"></script>
+    <script src="./script/dataHandler.js"></script>
+  </head>
+
+  <body>
+    <header class="o-row o-row--header">
+      <div class="o-container">
+        <div class="c-header">
+          <div class="c-header__mobile-nav-trigger">
+            <button class="o-button-reset c-nav-trigger js-toggle-nav">
+              <svg class="c-nav-trigger__svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+              </svg>
+            </button>
+          </div>
+          <h1 class="c-header__title c-lead c-lead--xl c-lead--white u-mb-clear">Audio</h1>
+        </div>
+      </div>
+    </header>
+    <section class="o-row--audio">
+      <div class="o-container">
+
+      </div> 
+    </section>
+    <footer class="c-audio">
+      <div class="c-card__box">
+        <div>
+          <svg class="c-audio__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18">
+            <g id="icon" transform="translate(0 -0.029)">
+              <path id="Shape" d="M18.267,18H1.733A1.744,1.744,0,0,1,0,16.249V4.063a1.74,1.74,0,0,1,1.768-1.75V1.63A1.623,1.623,0,0,1,3.38,0H16.619a1.623,1.623,0,0,1,1.613,1.63l.036.683A1.744,1.744,0,0,1,20,4.063V16.249A1.744,1.744,0,0,1,18.267,18ZM7.936,9.8h0l2.979,2.447a.423.423,0,0,0,.273.1.2.2,0,0,0,.052,0,.432.432,0,0,0,.294-.167L14.1,8.815l.775.757V7.095l-2.165.364.767.749L11.12,11.285,8.178,8.868a.432.432,0,0,0-.272-.1A.426.426,0,0,0,7.6,8.9L4.964,11.6a.445.445,0,0,0,0,.621.434.434,0,0,0,.615,0L7.935,9.8ZM3.38.455A1.17,1.17,0,0,0,2.219,1.63v.683H17.781V1.63A1.17,1.17,0,0,0,16.619.455Z" transform="translate(0 0.029)" fill="#fff"/>
+            </g>
+          </svg>
+          <p class="c-card__text_second">Browse</p>
+        </div>
+        <div>
+          <svg class="c-audio__icon" xmlns="http://www.w3.org/2000/svg" width="20.389" height="21" viewBox="0 0 20.389 21">
+            <g id="icon" transform="translate(-0.32)">
+              <path id="Shape" d="M0,2l5-.916V0L0,.916Z" transform="translate(7.345 8)" fill="#68b8eb" opacity="0.25"/>
+              <path id="Shape-2" data-name="Shape" d="M17.1,19H1.9A1.9,1.9,0,0,1,0,17.1V1.9A1.9,1.9,0,0,1,1.9,0H17.1A1.9,1.9,0,0,1,19,1.9V17.1A1.9,1.9,0,0,1,17.1,19ZM6.175,12.35c-.826,0-1.425.4-1.425.95s.6.95,1.425.95S7.6,13.85,7.6,13.3V8.477l4.75-.791v3.767a2.251,2.251,0,0,0-.475-.052c-.826,0-1.425.4-1.425.95s.6.95,1.425.95,1.426-.4,1.426-.95V5.225a.479.479,0,0,0-.168-.364.468.468,0,0,0-.385-.105l-5.7.95a.473.473,0,0,0-.4.468V12.4A2.19,2.19,0,0,0,6.175,12.35Z" transform="translate(0.32 2)" fill="#68b8eb" opacity="0.25"/>
+              <path id="Shape-3" data-name="Shape" d="M17.073,0H1.659A1.92,1.92,0,0,0,0,.963H16.11A1.929,1.929,0,0,1,18.037,2.89V19A1.92,1.92,0,0,0,19,17.341V1.927A1.929,1.929,0,0,0,17.073,0Z" transform="translate(1.709)" fill="#68b8eb" opacity="0.25"/>
+            </g>
+          </svg>
+          <p class="c-card__text_second">All Tracks</p>
+        </div>
+        <div>
+          <svg class="c-audio__icon" id="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+            <path id="Shape" d="M17.25,18H.75A.751.751,0,0,1,0,17.25V.75A.751.751,0,0,1,.75,0h16.5A.751.751,0,0,1,18,.75v16.5A.751.751,0,0,1,17.25,18ZM4.874,13.884h0l.695.365-.132-.774L6,12.928l-.778-.113-.347-.7-.348.7-.777.113.562.548-.133.774.695-.365ZM7.5,12.75a.75.75,0,1,0,0,1.5h6a.75.75,0,0,0,0-1.5ZM4.874,9.384h0l.695.365-.132-.774L6,8.428l-.778-.113-.347-.7-.348.7-.777.113.562.548L4.18,9.75l.695-.365ZM7.5,8.25a.75.75,0,1,0,0,1.5h6a.75.75,0,1,0,0-1.5Zm0-4.5a.75.75,0,1,0,0,1.5h6a.75.75,0,0,0,0-1.5ZM4.874,4.774h0l.695.365-.132-.774L6,3.818,5.223,3.7,4.875,3l-.348.7-.777.113.562.548L4.18,5.14l.695-.365Z" fill="#68b8eb" opacity="0.25"/>
+          </svg>
+          <p class="c-card__text_second">Playlists</p>
+        </div>
+      </div>
+  </footer> 
+    <aside class="c-mobile-nav">
+      <div class="c-mobile-nav__body">
+        <svg class="c-mobile-nav__svg" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 360 195.38">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: url(#linear-gradient);
+              }
+            </style>
+            <linearGradient id="linear-gradient" x1="420.23" y1="151.32" x2="-35.56" y2="21.05" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#ed2939" />
+              <stop offset="1" stop-color="#020024" />
+            </linearGradient>
+          </defs>
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M0,163.15c16.46,6,32.74,10.8,44.49,14.82,37.26,9.81,140.29,52.69,224.13-48.45C309,80.77,337.62,58.65,360,48.75V0H0Z" /></g>
+          </g>
+        </svg>
+        <div class="c-profile u-mb-profile-nav">
+          <div class="c-profile__picture"></div>
+          <div>
+            <p class="c-lead--md u-color-white u-mb-clear">Tristan Balanger</p>
+          </div>
+          <svg class="u-color-white" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M7 10l5 5 5-5z" />
+          </svg>
+        </div>
+        <div class="c-mobile-nav__nav c-mobile-nav__nav--main">
+          <nav class="c-nav">
+            <ul class="o-list c-nav__list">
+              <li class="c-nav__item">
+                <a href="./index.html" class="c-nav__link ">
+                  <svg class="c-nav__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                  </svg>
+                  Home
+                </a>
+              </li>
+              <li class="c-nav__item">
+                <a href="./Statistics.html" class="c-nav__link">
+                  <svg class="c-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path id="ic_assessment_24px" d="M24.333,3H5.667A2.675,2.675,0,0,0,3,5.667V24.333A2.675,2.675,0,0,0,5.667,27H24.333A2.675,2.675,0,0,0,27,24.333V5.667A2.675,2.675,0,0,0,24.333,3ZM11,21.667H8.333V12.333H11Zm5.333,0H13.667V8.333h2.667Zm5.333,0H19V16.333h2.667Z" transform="translate(-3 -3)" />
+                  </svg>                  
+                  Statistics
+                </a>
+              </li>
+              <li class="c-nav__item">
+                <a href="./Audio.html" class="c-nav__link c-nav__link--active">
+                  <svg class="c-nav__icon c-nav__icon--active" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 18 24">
+                    <path id="ic_music_note_24px" d="M15,3V17.067a6.574,6.574,0,0,0-3-.733c-3.315,0-6,2.387-6,5.333S8.685,27,12,27s6-2.387,6-5.333V8.333h6V3Z" transform="translate(-6 -3)" "/>
+                  </svg>
+                  Audio
+                </a>
+              </li>
+              <li class="c-nav__item">
+                <a href="./Settings.html" class="c-nav__link">
+                  <svg class="c-nav__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path id="ic_settings_applications_24px" d="M15,12.333A2.667,2.667,0,1,0,17.667,15,2.675,2.675,0,0,0,15,12.333ZM24.333,3H5.667A2.666,2.666,0,0,0,3,5.667V24.333A2.666,2.666,0,0,0,5.667,27H24.333A2.666,2.666,0,0,0,27,24.333V5.667A2.666,2.666,0,0,0,24.333,3ZM22,15a6.748,6.748,0,0,1-.067.907l1.973,1.547a.471.471,0,0,1,.107.6L22.147,21.28a.472.472,0,0,1-.573.2l-2.32-.933a7.151,7.151,0,0,1-1.573.92l-.347,2.467a.484.484,0,0,1-.467.4H13.133a.485.485,0,0,1-.467-.387L12.32,21.48a6.856,6.856,0,0,1-1.573-.92l-2.32.933a.472.472,0,0,1-.573-.2L5.987,18.067a.471.471,0,0,1,.107-.6L8.067,15.92A7.116,7.116,0,0,1,8,15a6.748,6.748,0,0,1,.067-.907L6.093,12.547a.471.471,0,0,1-.107-.6L7.853,8.72a.472.472,0,0,1,.573-.2l2.32.933a7.151,7.151,0,0,1,1.573-.92l.347-2.467a.484.484,0,0,1,.467-.4h3.733a.485.485,0,0,1,.467.387L17.68,8.52a6.856,6.856,0,0,1,1.573.92l2.32-.933a.472.472,0,0,1,.573.2l1.867,3.227a.471.471,0,0,1-.107.6L21.933,14.08A7.116,7.116,0,0,1,22,15Z" transform="translate(-3 -3)" />
+                  </svg>                  
+                  Settings
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </aside>
+  </body>
+</html>
